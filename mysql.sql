@@ -10,17 +10,17 @@
   create database 'sql_invoicing'; -- to create new db named sql_invoicing;
   use 'sql_invoicing'; -- to make active sql_invoicing db
   set names utf8; --  It is needed whenever you want to send data to the server having characters that cannot be represented in 
-                      pure ASCII, like 'ñ' or 'ö'.
-                      That if the MySQL instance is not configured to expect UTF-8 encoding by default from client 
-                      connections (many are, depending on your location and platform.
+                      -- pure ASCII, like 'ñ' or 'ö'.
+                      -- That if the MySQL instance is not configured to expect UTF-8 encoding by default from client 
+                       -- connections (many are, depending on your location and platform.
   set character_set_client = utfmb4; -- The utf8mb4 Character Set (4-Byte UTF-8 Unicode Encoding)
-                                        The utfmb4 character set has these characteristics:
-                                        1. Supports BMP and supplementary characters.
-                                        2. Requires a maximum of four bytes per multibyte character. 
-                                          utf8mb4 contrasts with the utf8mb3 character set, which supports only BMP characters and uses
-                                          a maximum of three bytes per character:
-                                        3. For a BMP character, utf8mb4 and utf8mb3 have identical storage 
-                                           characteristics: same code values, same encoding, same length.
+                                        -- The utfmb4 character set has these characteristics:
+                                        -- 1. Supports BMP and supplementary characters.
+                                        -- 2. Requires a maximum of four bytes per multibyte character. 
+                                         -- utf8mb4 contrasts with the utf8mb3 character set, which supports only BMP characters 
+                                        -- and uses a maximum of three bytes per character:
+                                        -- 3. For a BMP character, utf8mb4 and utf8mb3 have identical storage 
+                                         --  characteristics: same code values, same encoding, same length.
 
 CREATE TABLE `payment_methods`(
   `payment_method_id` tinyint(4) NOT NULL AUTO_INCREMENT,
@@ -80,10 +80,11 @@ SELECT * FROM table_a; -- will selelct all data from table_a
 SELECT column_a from table_a; -- will select column_a from table_a
 SELECT column_a, column_b from table_a; -- will select column_a and column_b from table_a
 SELECT column_a * 10 from table_a; -- will select column_a and multiply each row with 10 from table_a 
-                                       and return new column named column_a*10
+                                       -- and return new column named column_a*10
 SELECT column_a, column_b * 10 from table_a; -- will select column_a and column_b and multiply each row of column_b with 10 from 
-                                       table_a  and return new column named column_b * 10
-SELECT column_a * 10 AS new_column from table_a; -- will select column_a and multiply each row with 10 from table_a and return new column named new_column
+                                       -- table_a  and return new column named column_b * 10
+SELECT column_a * 10 AS new_column from table_a; -- will select column_a and multiply each row with 10 from table_a and return 
+                                                   -- new column named new_column
 SELECT DISTINCT column_a from table_a; -- will select all row of column_a and ignore repeated data
 
 

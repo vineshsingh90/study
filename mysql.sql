@@ -1,9 +1,11 @@
+-- # Source: https://www.youtube.com/watch?v=7S_tz1z_5bA&list=PLTjRvDozrdlynYXGUfyyMZdrQ0Sz27aud
 # download mysql installer (mysql-installer-web-community-x.x.x.x.msi) from https://dev.mysql.com/downloads/mysql/
 # install the downloaded file with most default and set user name & password
 # now run mysql workbench and create a new connection or use existing one
 # to comment a query use -- before query line;
 
-#Execute create data or execute below queries:
+# Create data or execute below queries:
+
   drop database if exists 'sql_invoicing'; -- will drop/delete sql_invoicing named db if exists;
   create database 'sql_invoicing'; -- to create new db named sql_invoicing;
   use 'sql_invoicing'; -- to make active sql_invoicing db
@@ -25,4 +27,68 @@ CREATE TABLE `payment_methods`(
    `name` varchar(50) NOT NULL,
   PRIMARY KEY (`payment_method_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO payment_methods values(1,'UPI'); --  insert new data in payment_methods table
+
+CREATE TABLE `clients` (
+  `client_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` char(2) NOT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `clients` VALUES (1,'Vinte','3 Nevada Parkway','Syracuse','NY','315-252-7305');
+
+CREATE TABLE `invoices` (
+  `invoice_id` int(11) NOT NULL,
+  `number` varchar(50) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `invoice_total` decimal(9,2) NOT NULL,
+  `payment_total` decimal(9,2) NOT NULL DEFAULT '0.00',
+  `invoice_date` date NOT NULL,
+  `due_date` date NOT NULL,
+  `payment_date` date DEFAULT NULL,
+  PRIMARY KEY (`invoice_id`),
+  KEY `FK_client_id` (`client_id`),
+  CONSTRAINT `FK_client_id` FOREIGN KEY (`client_id`) REFERENCES `clients` (`client_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `invoices` VALUES (1,'91-953-3396',2,101.79,0.00,'2019-03-09','2019-03-29',NULL);
+
+CREATE TABLE `payments` (
+  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_id` int(11) NOT NULL,
+  `invoice_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `amount` decimal(9,2) NOT NULL,
+  `payment_method` tinyint(4) NOT NULL,
+  PRIMARY KEY (`payment_id`),
+  KEY `fk_client_id_idx` (`client_id`),
+  KEY `fk_invoice_id_idx` (`invoice_id`),
+  KEY `fk_payment_payment_method_idx` (`payment_method`),
+  CONSTRAINT `fk_payment_client` FOREIGN KEY (`client_id`) REFERENCES `clients` (`client_id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_payment_invoice` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`invoice_id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_payment_payment_method` FOREIGN KEY (`payment_method`) REFERENCES `payment_methods` (`payment_method_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `payments` VALUES (1,5,2,'2019-02-12',8.18,1);
+
+SELECT * FROM table_a; -- will selelct all data from table_a
+SELECT column_a from table_a; -- will select column_a from table_a
+SELECT column_a, column_b from table_a; -- will select column_a and column_b from table_a
+SELECT column_a * 10 from table_a; -- will select column_a and multiply each row with 10 from table_a 
+                                       and return new column named column_a*10
+SELECT column_a, column_b * 10 from table_a; -- will select column_a and column_b and multiply each row of column_b with 10 from 
+                                       table_a  and return new column named column_b * 10
+SELECT column_a * 10 AS new_column from table_a; -- will select column_a and multiply each row with 10 from table_a 
+                                       and return new column named new_column
+SELECT DISTINCT column_a from table_a; -- will select all row of column_a and ignore repeated data
+
+
+
+
+
 

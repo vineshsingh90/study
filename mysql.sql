@@ -87,6 +87,16 @@ SELECT column_a * 10 AS new_column from table_a; -- will select column_a and mul
                                                    -- new column named new_column
 SELECT DISTINCT column_a from table_a; -- will select all row of column_a and ignore repeated data
 
+SELECT * FROM table_a WHERE points_value = 10; -- equal
+SELECT * FROM table_a WHERE points_value > 10; -- grater
+SELECT * FROM table_a WHERE points_value >= 10; -- greater & equal
+SELECT * FROM table_a WHERE points_value < 10; -- lesser
+SELECT * FROM table_a WHERE points_value <= 10; -- lesser & equal
+SELECT * FROM table_a WHERE points_value != 10; -- not equal
+SELECT * FROM table_a WHERE points_value <> 10; -- not equal
+SELECT * FROM table_a WHERE state_name = 'Delhi'; -- equal
+SELECT * FROM table_a WHERE birth_date > '1990-01-01'; -- greater
+
 
 
 

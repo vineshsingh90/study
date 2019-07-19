@@ -83,8 +83,7 @@ SELECT column_a * 10 from table_a; -- will select column_a and multiply each row
                                        and return new column named column_a*10
 SELECT column_a, column_b * 10 from table_a; -- will select column_a and column_b and multiply each row of column_b with 10 from 
                                        table_a  and return new column named column_b * 10
-SELECT column_a * 10 AS new_column from table_a; -- will select column_a and multiply each row with 10 from table_a 
-                                       and return new column named new_column
+SELECT column_a * 10 AS new_column from table_a; -- will select column_a and multiply each row with 10 from table_a and return new column named new_column
 SELECT DISTINCT column_a from table_a; -- will select all row of column_a and ignore repeated data
 
 

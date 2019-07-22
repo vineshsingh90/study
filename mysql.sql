@@ -98,6 +98,32 @@ SELECT * FROM table_a WHERE state_name = 'Delhi'; -- equal
 SELECT * FROM table_a WHERE birth_date > '1990-01-01'; -- greater
 
 
+SELECT * FROM customers WHERE birth_date > '1990-01-01';
+
+SELECT * FROM customers WHERE birth_date > '1990-01-01' AND points > 1000;
+SELECT * FROM customers WHERE birth_date > '1990-01-01' OR points > 1000;
+
+SELECT * FROM customers WHERE birth_date > '1990-01-01' OR points > 1000 AND state = 'VA';
+SELECT * FROM customers WHERE birth_date > '1990-01-01' OR (points > 1000 AND state = 'VA');
+
+SELECT * FROM customers WHERE NOT (birth_date > '1990-01-01' OR points > 1000); 
+SELECT * FROM customers WHERE birth_date <= '1990-01-01' AND points <= 1000 ; -- similar to above one (i.e. having not operatOR)
+
+SELECT * FROM ORder_items WHERE ORder_id = 6 AND unit_price * quantity > 30;
+
+SELECT * FROM customers WHERE state = 'VA' OR state = 'GA' OR state = 'FL'; -- similar and better one is below
+SELECT * FROM customers WHERE state IN ('VA', 'GA', 'FL'); -- its better to use IN operator instead of multiple OR
+
+SELECT * FROM customers WHERE NOT (state = 'VA' OR state = 'GA' OR state = 'FL'); -- better one is below
+SELECT * FROM customers WHERE state NOT IN ('VA', 'GA', 'FL'); -- its better to use IN operator instead of multiple OR
+
+SELECT * FROM products WHERE quantity_IN_stock IN (49,38,72);
+
+SELECT * FROM customers WHERE points >= 1000 AND points <= 3000; -- similar and better one is below
+SELECT * FROM customers WHERE points BETWEEN 1000 AND 3000; -- use BETWEEN for range selection
+SELECT * FROM customers WHERE birth_date BETWEEN '1990-01-01' AND '2000-01-01'; -- also works for date range selection
+
+
 
 
 

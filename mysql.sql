@@ -123,6 +123,43 @@ SELECT * FROM customers WHERE points >= 1000 AND points <= 3000; -- similar and 
 SELECT * FROM customers WHERE points BETWEEN 1000 AND 3000; -- use BETWEEN for range selection
 SELECT * FROM customers WHERE birth_date BETWEEN '1990-01-01' AND '2000-01-01'; -- also works for date range selection
 
+-- **The LIKE operator** --
+
+SELECT * FROM customers WHERE last_name LIKE 'b%'; -- select all rows where last_name starts with b (uppercase or lowercase)
+SELECT * FROM customers WHERE last_name LIKE 'brush%'; -- select all rows where last_name starts with brush 
+
+SELECT * FROM customers WHERE last_name LIKE '%b%'; -- select all rows where last_name contains b at any position 
+SELECT * FROM customers WHERE last_name LIKE '%be%'; -- select all rows where last_name contains be at any position 
+
+SELECT * FROM customers WHERE last_name LIKE '%y'; -- select all rows where last_name ends with y 
+SELECT * FROM customers WHERE last_name LIKE '%yo'; -- select all rows where last_name ends with yo 
+
+SELECT * FROM customers WHERE last_name LIKE '_y'; -- select all rows where last_name has 2 chars and ends with y 
+SELECT * FROM customers WHERE last_name LIKE '_____y'; -- select all rows where last_name has 6 chars and ends with y 
+SELECT * FROM customers WHERE last_name LIKE '____yo'; -- select all rows where last_name has 6 chars and ends with yo
+SELECT * FROM customers WHERE last_name LIKE 'a____y'; -- select all rows where last_name has 6 chars and starts with a and ends with y
+
+-- here % sign is for any number of character and _ sign is for single character;
+
+SELECT *  FROM customers WHERE addresses LIKE '%trail%' OR '%avenue'; -- # get customers whose addresses contains trail or avenue 
+
+SELECT * FROM customers WHERE phone LIKE '%9'; -- select all phone numbers ended with 9
+SELECT * FROM customers WHERE phone NOT LIKE '%9'; -- select all phone numbers not ended with 9
+
+-- ** The REGEXP operator** --
+
+SELECT * FROM customers WHERE last_name REGEXP 'field'; -- select all rows where last_name contains field
+SELECT * FROM customers WHERE last_name REGEXP '^field'; -- caret sign at start select all rows where last_name must starts with field
+SELECT * FROM customers WHERE last_name REGEXP 'field$'; -- dollor sign at end select all rows where last_name must ends with field
+SELECT * FROM customers WHERE last_name REGEXP 'field|mac'; -- pipe sign separated words select rows where last_name contains any of that words
+SELECT * FROM customers WHERE last_name REGEXP 'field|mac|rose'; -- select rows where last_name contains field or mac or rose
+SELECT * FROM customers WHERE last_name REGEXP '^field|mac|rose'; -- select rows where last_name contains mac or rose or  starts with field
+SELECT * FROM customers WHERE last_name REGEXP 'field$|^rose'; -- select rows where last_name start with rose or ends with field
+SELECT * FROM customers WHERE last_name REGEXP '[gim]e'; -- select rows where last_name contains ge or ie or me
+SELECT * FROM customers WHERE last_name REGEXP 'e[gim]'; -- select rows where last_name contains eg or ei or em
+SELECT * FROM customers WHERE last_name REGEXP '[a-h]e'; -- select rows where last_name contains ae or be or ce or ...... he
+
+
 
 
 

@@ -160,6 +160,98 @@ SELECT * FROM customers WHERE last_name REGEXP 'e[gim]'; -- select rows where la
 SELECT * FROM customers WHERE last_name REGEXP '[a-h]e'; -- select rows where last_name contains ae or be or ce or ...... he
 
 
+-- * The IS NULL operator* --
+
+SELECT * FROM customers WHERE phone IS NULL; -- only select rows where phone is null;
+SELECT * FROM customers WHERE phone IS NOT NULL; -- only select rows where phone is  not null;
+
+
+-- * The ORDER BY Clause* --
+
+SELECT * FROM customers ORDER BY last_name; -- order by last_name (Default ascending order)
+SELECT * FROM order_items ORDER BY unit_price * quantity; -- order by some expression
+SELECT * FROM order_items ORDER BY unit_price*quantity AS new_value; -- order by some alias of expression
+SELECT * FROM customers ORDER BY last_name DESC; -- order by last_name in descending order
+SELECT * FROM customers ORDER BY last_name, state; -- order by last_name and state 
+SELECT * FROM customers ORDER BY last_name DESC, state; -- order by last_name in descending order and  by state
+SELECT * FROM customers ORDER BY last_name DESC, state DESC; -- -- order by last_name in descending order and by state in descending order
+SELECT first_name, last_name FROM customers ORDER BY birth_date; -- select data from other column and order by some other column
+SELECT first_name, last_name, 10 AS new_points FROM customers ORDER BY new_points; -- order by alias column (new_points)
+SELECT first_name, last_name, 10 AS new_points FROM customers ORDER BY new_points, first_name; -- order by alias (new_points) and first_name
+SELECT first_name, last_name FROM customers ORDER BY 1,2; -- select data and order by firstSelection and secondSelection then first_name 
+															-- (Not convenient as selection order will affect sorting)
+SELECT *, unit_price * quantity as total_price from order_items WHERE order_id = 2 ORDER BY total_price DESC;
+
+-- * The LIMIT Clause* --
+SELECT * FROM customers LIMIT 3; -- select first 3 rows
+SELECT * FROM customers LIMIT 6,3; -- skip first 6 rows then select 3 rows
+SELECT * FROM customers ORDER BY points DESC LIMIT 3; -- select 3 rows with higher points
+
+
+-- * INNER JOIN and OUTER JOINT to select data from multiple table or multiple databases* --
+
+SELECT * FROM orders JOIN customers ON orders.customer_id = customers.customer_id; -- select joint data form orders table and also the
+												-- customers details from customers table based on customer_id available in order table
+SELECT order_id, first_name, last_name FROM orders JOIN customers ON orders.customer_id = customers.customer_id; 
+								-- select joint data (order_id, first_name, last_name) form orders table and customers table
+								
+SELECT order_id, customer_id, first_name, last_name FROM orders JOIN customers ON orders.customer_id = customers.customer_id; 
+								-- Error Code: 1052. Column 'customer_id' in field list is ambiguous
+								-- means customer_id is available in multiple table.
+								-- solution: prefix column with table name i.e. orders.customer_id) 
+								
+SELECT order_id, orders.customer_id, first_name, last_name FROM orders JOIN customers ON orders.customer_id = customers.customer_id; 
+								-- select joint data (order_id, customer_id, first_name, last_name) form orders table and customers table
+								
+-- as orders and customers are repeating in above queries. to simplify them we can use alias for the as blow one
+	SELECT order_id, o.customer_id, first_name, last_name FROM orders o JOIN customers c on o.order_id = c.customer_id; 
+			-- using o as alias for orders and c for customers
+
+
+SELECT * FROM order_items oi JOIN sql_inventory.products p ON oi.product_id = p.product_id; 
+					-- sql_store is in use and order_items table from sql_store will be joining products table data from sql_inventory
+					-- in case if selecting table from the db that is not currently in use the the table name need to be prefixed with db name as below query
+-- made	sql_inventory in use so order_items table is prefixed with sql_store (db name)
+	SELECT * FROM sql_store.order_items oi JOIN products p ON oi.product_id = p.product_id;
+
+
+-- * SELF JOIN * ---
+	use sql_hr; -- made sql_hr in use
+
+	SELECT emp.employee_id, CONCAT(emp.first_name,' ', emp.last_name) AS Employee, CONCAT(mngr.first_name , ' ' , mngr.last_name )AS Manager
+		FROM employees emp JOIN employees mngr ON emp.reports_to = mngr.employee_id;
+			-- selecting employees with their manager details. manager is also an employee so we joining data from same table(employees)
+
+
+-- * joining all data from more then two table * --
+	SELECT * FROM orders o JOIN customers c ON o.customer_id = c.customer_id JOIN order_statuses os ON o.status = os.order_status_id;
+		-- Joins data from orders table with customers table based on customer_id and with order_statuses table based on order_status_id
+
+-- * joining some columns data from more then two table * --
+	SELECT o.order_id, o.order_date, c.first_name, c.last_name, os.name FROM orders o 
+		JOIN customers c ON o.customer_id = c.customer_id 
+		JOIN order_statuses os ON o.status = os.order_status_id;
+			-- Joins some columns from orders table with customers table based on customer_id 
+				-- and with order_statuses table based on order_status_id
+				
+-- * Compound Join Condition (Joins different table data based on multiple conditions)* -- 
+	SELECT * FROM order_items oi JOIN order_item_notes oin ON oi.order_id = oin.order_id AND oi.product_id = oin.product_id;
+
+-- * another way to join two tables data ( called as Implicit Join Syntax)* --
+	SELECT * FROM orders o, customers c WHERE o.customer_id = c.customer_id; 
+			-- not usefull as if forgot to put WHERE it will select all from  orders & customers tabels
+
+-- ** OUTER JOIN (LEFT OUTER JOIN and RIGHT OUTER JOIN as OUTER keyword is optional so we can write LEFT JOIN & RIGHT JOIN) ** --
+	SELECT c.customer_id, c.first_name, o.order_id FROM orders o LEFT JOIN customers c ON c.customer_id = o.customer_id; 
+		-- select all from left i.e. customers table with their order_id if no orders then it return null value
+	SELECT c.customer_id, c.first_name, o.order_id FROM orders o RIGHT JOIN customers c ON c.customer_id = o.customer_id; 
+		-- select all from right i.e. orders table with their customer_id and first_name.
+	
+	-- swap table name --
+	SELECT c.customer_id, c.first_name, o.order_id FROM orders o RIGHT JOIN customers c ON c.customer_id = o.customer_id; 
+		-- select all from right i.e. orders table with their customer_id and first_name.
+
+
 
 
 

@@ -253,7 +253,131 @@ SELECT * FROM order_items oi JOIN sql_inventory.products p ON oi.product_id = p.
 
 
 
+-- # LEFT JOIN for multiple tables
+	SELECT  c.customer_id, c.first_name, o.order_id, o.shipper_id, sh.name AS shipper FROM customers c 
+	LEFT JOIN orders o ON c.customer_id= o.customer_id 
+	LEFT JOIN shippers sh ON o.shipper_id = sh.shipper_id;
+		-- selects all customers with order_id and shipper details
+	-- *Best practice: try avoiding RIGHT JOIN while joining multiple tables data
+	
+	-- one more example
+		SELECT o.order_date, o.order_id, c.first_name, sh.name AS shipper, os.name as status FROM orders o 
+		JOIN customers c ON o.customer_id = c.customer_id
+		LEFT JOIN shippers sh ON o.shipper_id = sh.shipper_id
+		JOIN order_statuses os ON os.order_status_id = o.status;
 
+-- # SELF OUTER JOIN
+	SELECT e.employee_id, e.first_name as employee, m.first_name as manager FROM  employees e 
+	JOIN employees m ON e.reports_to = m.employee_id; 
+		-- select only employees having manager
+	SELECT e.employee_id, e.first_name as employee, m.first_name as manager FROM  employees e 
+	LEFT JOIN employees m ON e.reports_to = m.employee_id;  
+		-- select all employees with or without manager
+
+-- # The USING Clause
+	-- if joining condition is like [ON o.customer_id =  c.customer_id] then we can use USING clause as USING(customer_id)
+	-- example 1: 
+	SELECT o.order_id, c.first_name FROM orders o JOIN customers c USING(customer_id);
+	-- example 2: 
+	SELECT o.order_id, c.first_name, sh.name as shipper FROM orders o 
+	JOIN customers c USING(customer_id) LEFT JOIN shippers sh USING(shipper_id);
+
+	-- * USING keyword only work if the column name across differetn tables will be same
+
+-- # The USING Clause for multi conditional JOIN
+	-- joing by ON keyword:
+	SELECT * FROM order_items oi JOIN order_item_notes oin ON oi.order_id = oin.order_id AND oi.product_id = oin.product_id;
+	
+	-- joing by USING keyword:
+	SELECT * FROM order_items oi JOIN order_item_notes oin USING(order_id, product_id);
+	
+-- # JOIN multi tables data with ON and USING keyword
+	SELECT p.date, c.name as client, p.amount, pm.name as payment_method FROM payments p JOIN clients c USING(client_id) JOIN payment_methods pm ON  pm.payment_method_id = p.payment_method;
+
+-- # NATURAL JOIN (In mqsql another simpler way to join two tables. Its called natural join. 
+	-- (not reccomended as sometimes it produces unexpected result)
+	SELECT o.order_id, c.first_name FROM orders o NATURAL JOIN customers c; -- do join based on same name column in both table
+		
+	-- *Natural joins are easier to code but it can be a little bit dangerous because we are letting the DB Engine guess the join, 
+		-- we dont have dont have control on it.  
+		-- For this very reason natural joins can produce unexpected results and thats why i discourage you to use them.
+
+-- # CROSS JOIN (we use CROSS JOIN to combine or every record from first table, with every record in a second table)
+	SELECT * FROM customers c CROSS JOIN products p; -- explicit syntax
+	SELECT * FROM customers c, products p; -- implicit syntax
+		-- * explicit syntax are more preferred
+		-- * above query will combine every record in customers table with every record in products table
+		-- * As it joins every record in both tables so conditions are not required in CROSS JOIN
+
+-- # UNIONS
+
+	SELECT order_id, order_date, 'Active' AS status FROM orders WHERE order_date >= '2019-01-01' 
+	UNION  SELECT order_id, order_date, 'Archived' AS status FROM orders WHERE order_date < '2019-01-01';
+	
+	-- another ex:
+	SELECT customer_id, first_name, points, 'Bronze' AS type FROM customers WHERE points < 2000
+	UNION SELECT customer_id, first_name, points, 'Silver' AS type FROM customers WHERE points BETWEEN 2000 AND 3000
+	UNION SELECT customer_id, first_name, points, 'Gold' AS type FROM customers WHERE points > 3000
+	ORDER BY first_name;
+
+-- # INSERT data in table
+	-- Inserting data without specifying column name:
+		INSERT INTO customers VALUES(DEFAULT, 'Ron', 'Max', '1990-01-01', default, 'address', 'City', 'CA', DEFAULT);
+		INSERT INTO customers VALUES(DEFAULT, 'Ron', 'Max', '1990-01-01', NULL, 'address', 'City', 'CA', DEFAULT);
+			-- * data should be in same order as column in table
+			-- * WE have to pass DEFAULT keyword for Auto-incriment Field (passing value will generate error if same value will be in column)
+			-- * We have to pass DEFAULT or some value for Field where default values are given for column 
+			-- * WE have to pass DEFAULT or NULL or some value where null is allowed
+	
+	-- Inserting data by specifying column name:
+		INSERT INTO customers (first_name, last_name, birth_date, address, city, state) 
+		VALUES('Ron', 'Max', '1990-01-01', 'address', 'City', 'CA');
+			-- * we can change the orrders of values by changing columns order i.e. values order will be according to columns order
+	
+	-- Inserting multiple rows at once:
+		INSERT INTO products (name, quantity_in_stock, unit_price) 
+		VALUES('product 1', 21, 11.90),('product 2', 11, 20.90),('product 3', 10, 10.90);
+	-- get the last inserted id
+		LAST_INSERT_ID();
+		
+	-- hierarchical insert
+		INSERT INTO orders (customer_id, order_date, status) values(1, '2019-01-01',1);    
+		INSERT INTO order_items values (last_insert_id(), 1,1,2.2),(last_insert_id(), 2,2,5.0);
+		
+-- # Creating a copy of table:
+	CREATE TABLE orders_archived AS SELECT * FROM orders;
+		-- create new table named orders_archived with same data as orders but ignores the config of column as Primary key and Auto-incriment
+	-- * In the above query SELECT * FROM orders is known as sub-query.
+	-- * We can use sub-query to copy some  data from orders table and insert into orders_archived table as shown below:
+		-- first turncate orders_archived table then run below query:
+		INSERT INTO orders_archived SELECT * FROM orders  WHERE order_date < '2019-01-01';
+
+-- # Update method:
+	UPDATE invoices SET payment_total = 10, payment_date: '2019-03-01' WHERE invoice_id = 1;
+	
+	-- * update with some expression or value from some other column:
+		UPDATE invoices SET  payment_total = invoice_total * 0.5, payment_date = due_date WHERE invoice_id = 3;
+			-- payment_total value will be updated by half of invoice_total value and payment_date by value of due_date
+
+-- # Updating multiple rows:
+	UPDATE invoices SET  payment_total = invoice_total * 0.5, payment_date = due_date WHERE client_id = 3;
+	
+	-- Q: Give extra 50 points to all customers born before 1990.
+		UPDATE customers SET points = points + 50 WHERE birth_date < '1990-01-01';
+		
+-- # Using Subqueries in Updates:
+	UPDATE invoices SET  payment_total = invoice_total * 0.5, payment_date = due_date 
+	WHERE client_id = (SELECT client_id FROM clients WHERE name='Myworks');
+	
+	-- if Subqueries returns multiple ids:
+	UPDATE invoices SET  payment_total = invoice_total * 0.5, payment_date = due_date 
+	WHERE client_id IN (SELECT client_id FROM clients WHERE state IN ('CA','NY'));
+
+-- # Deleting rows:
+	DELETE * FROM invoices WHERE invoice_id = 2; -- deleting by id
+	DELETE * FROM invoices WHERE invoice_id = (SELECT * FROM clients WHERE name = 'Myworks'); -- deleting by subqueries
+
+		
 
 
 

@@ -24,8 +24,42 @@ null-true=-1;
 undefined + Number || Boolean  = NaN;
 undefined-1=Nan
 undefined + Stirng='undefinedaaa';
+
 // ======================
-// ======================// ======================
+console.log("first");
+setTimeout(() => {
+    console.log("second");
+}, 0);
+console.log("third");
+// first
+// third
+// second
+
+// ======================
+console.log("first");
+setTimeout(() => {
+    console.log(a);
+}, 0);
+var a = "second";
+console.log("third");
+// first
+// third
+// second
+
+// ======================
+console.log("first");
+setTimeout(() => {
+    console.log(a);
+}, 0);
+var a = "second";
+console.log(b);
+var b = ("third");
+// first
+// undefined
+// second
+
+// ======================
+
 // ======================
 // ======================
 // ======================

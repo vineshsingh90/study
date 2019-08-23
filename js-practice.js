@@ -21,9 +21,14 @@ true+"aa"="trueaa";
 null+false=0;
 null-false=0;
 null-true=-1;
+null-0=0;
+null+0=0;
+null+number=number;
+null-number=-number;
+null + "aaa"='nullaaa';
 undefined + Number || Boolean  = NaN;
 undefined-1=Nan
-undefined + Stirng='undefinedaaa';
+undefined + "aaa"='undefinedaaa';
 
 // ======================
 console.log("first");
@@ -64,7 +69,7 @@ var b = ("third");
 5=="5" & 1==true & 0==false & '1'==true & '0'==false & null==undefined & 0 == -0 & 0 === -0  //true
 JSON.stringify([])==JSON.stringify([]) & JSON.stringify({})==JSON.stringify({}) // true
 
-5==="5" & 1===true & 0===false & null === undefined //false
+5==="5" & 1===true & 0===false & null === undefined & null==0 & undefined==0 //false
 []==[] & []===[] & {}=={} & {}==={} & [0,1]==[0,1] & {'name':'vs'}=={'name':'vs'}  // false
 
 // ======================

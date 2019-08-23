@@ -61,7 +61,7 @@ var b = ("third");
 
 // ======================
 // == v/s ===
-5=="5" & 1==true & 0==false & null==undefined & 0 == -0 & 0 === -0  //true
+5=="5" & 1==true & 0==false & '1'==true & '0'==false & null==undefined & 0 == -0 & 0 === -0  //true
 5==="5" & 1===true & 0===false & null === undefined //false
 // ======================
     

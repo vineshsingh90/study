@@ -69,7 +69,7 @@ var b = ("third");
 5=="5" & 1==true & 0==false & '1'==true & '0'==false & null==undefined & 0 == -0 & 0 === -0  //true
 JSON.stringify([])==JSON.stringify([]) & JSON.stringify({})==JSON.stringify({}) // true
 
-5==="5" & 1===true & 0===false & null === undefined & null==0 & undefined==0 //false
+5==="5" & 1===true & 0===false & null === undefined & null==0 & undefined==0 & NaN==NaN & NaN===NaN//false
 []==[] & []===[] & {}=={} & {}==={} & [0,1]==[0,1] & {'name':'vs'}=={'name':'vs'}  // false
 
 // ======================

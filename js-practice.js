@@ -73,6 +73,10 @@ JSON.stringify([])==JSON.stringify([]) & JSON.stringify({})==JSON.stringify({}) 
 []==[] & []===[] & {}=={} & {}==={} & [0,1]==[0,1] & {'name':'vs'}=={'name':'vs'}  // false
 
 // ======================
+const arr = ['a', 'b', 'c'];
+arr.test = 'abc';
+console.log(arr); // ["a", "b", "c"]
+console.log(arr.test); // "abc"
     
 // ======================
 // ======================

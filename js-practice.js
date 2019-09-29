@@ -1,8 +1,30 @@
 console.log(a); //Uncaught ReferenceError: b is not defined
 // ======================
-var a;
-console.log(a); // undefined
+console.log(b); // undefined
+var b;
 // ======================
+var c;
+console.log(c); // undefined
+// ======================
+let d;
+console.log(d); // undefined
+
+// ======================
+console.log(c); // ReferenceError: Cannot access 'x' before initialization
+let d;
+// ======================
+var a = 1,y = 2;
+if(true){
+  let x = a;  
+  let y = y; // Cannot access 'x' before initialization
+  console.log(x); //  1
+  console.log(z); //  Cannot access 'x' before initialization
+  let z;
+}
+// ======================
+
+// ======================
+
 5+true=6;
 5-true=4;
 5+false=5;

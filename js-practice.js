@@ -28,7 +28,27 @@ let d;
 })();
 console.log(p);// Cannot access 'x' before initialization
 // ============================================================================================================
-
+var x = 1;
+switch(x){
+  case 0:
+    let foo = 20; // SyntaxError: Identifier 'foo' has already been declared
+    break;
+  case 1:
+    let foo = 30; // SyntaxError: Identifier 'foo' has already been declared
+    break;
+}
+// ============================================================================================================
+var x = 1;
+switch(x){
+  case 0:{
+    let foo = 20; // SyntaxError: Identifier 'foo' has already been declared
+    break;
+  }
+  case 1:{
+    let foo = 30; // SyntaxError: Identifier 'foo' has already been declared
+    break;
+  }
+}
 // ============================================================================================================
 
 5+true=6;

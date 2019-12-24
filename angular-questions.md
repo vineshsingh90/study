@@ -1,110 +1,801 @@
-**1. What is Angular?**
+<details> 
+ <summary>1. What is Angular?</summary>    
+ ```
+ Angular is a TypeScript-based open-source web application framework, developed and maintained by Google. It offers an easy and powerful way of building front end web-based applications.
 
-<details>
- <summary>2. Click to expand!</summary>
-  
-  ```javascript
-    function whatIsLove() {
-      console.log('Baby Don't hurt me. Don't hurt me');
-      return 'No more';
-    }
-  ```
+Angular integrates a range of features like declarative templates, dependency injection, end-to-end tooling, etc. that facilitates web application development.
+ ```
 </details>
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
-****
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>]
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+
+<details> 
+ <summary></summary>    
+ ```
+ ```
+</details>
+

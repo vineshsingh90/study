@@ -1,7 +1,7 @@
 **1. What is Angular?**
 
 <details>
-  <summary>**2. Click to expand!**</summary>
+ **2. <summary> Click to expand!</summary>**
   
   ```javascript
     function whatIsLove() {

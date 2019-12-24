@@ -6,11 +6,12 @@ Angular integrates a range of features like declarative templates, dependency in
 
 <details> 
  <summary>2. Define the ng-content Directive?</summary>    
-Conventional HTML elements have some content between the tags. For instance:
-<p>Put your paragraph here</p>
+```Conventional HTML elements have some content between the tags. For instance:
+\<p\>Put your paragraph here\</p\>
 Now consider the following example of having custom text between angular tags:
 <app-work>This won’t work like HTML until you use ng-content Directive</app-work>
 However, doing so won’t work the way it worked for HTML elements. In order to make it work just like the HTML example mentioned above, we need to use the ng-content Directive. Moreover, it is helpful in building reusable components.
+ ```
 </details>
 
 <details> 

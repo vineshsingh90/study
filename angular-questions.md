@@ -1,11 +1,16 @@
 <details> 
  <summary>1. What is Angular?</summary>    
-  ```javascript
-    function whatIsLove() {
-      console.log('Baby Don't hurt me. Don't hurt me');
-      return 'No more';
-    }
-  ```
+   Angular is a TypeScript-based open-source web application framework, developed and maintained by Google. It offers an easy and   powerful way of building front end web-based applications.
+Angular integrates a range of features like declarative templates, dependency injection, end-to-end tooling, etc. that facilitates web application development.
+</details>
+
+<details> 
+ <summary>2. Define the ng-content Directive?</summary>    
+Conventional HTML elements have some content between the tags. For instance:
+<p>Put your paragraph here</p>
+Now consider the following example of having custom text between angular tags:
+<app-work>This won’t work like HTML until you use ng-content Directive</app-work>
+However, doing so won’t work the way it worked for HTML elements. In order to make it work just like the HTML example mentioned above, we need to use the ng-content Directive. Moreover, it is helpful in building reusable components.
 </details>
 
 <details> 
@@ -13,12 +18,6 @@
  ```
  ```
 </details>
-
-<details> 
- <summary></summary>    
- ```
- ```
-</details>]
 
 <details> 
  <summary></summary>    
